@@ -11,7 +11,7 @@ use std::time::SystemTime;
 
 use libc::{self};
 
-#[cfg(not(feature = "defmt"))]
+#[cfg(feature = "log")]
 use log::{debug, info};
 
 #[cfg(feature = "defmt")]
@@ -235,7 +235,7 @@ where
 
             match std::str::from_utf8(&buff[0..n as usize]) {
                 Ok(s) => info!("Received: '{}' info: {:?}", s, i),
-                #[cfg(not(feature = "defmt"))]
+                #[cfg(feature = "log")]
                 Err(_) => info!("Received: '{:02x?}' info: {:?}", &buff[0..n as usize], i),
                 #[cfg(feature = "defmt")]
                 Err(_) => info!("Received: '{:?}' info: {:?}", &buff[0..n as usize], i),
@@ -359,7 +359,7 @@ where
             // Parse out string if possible, otherwise print hex
             match std::str::from_utf8(&buff[0..n as usize]) {
                 Ok(s) => info!("Received: '{}' info: {:?}", s, i),
-                #[cfg(not(feature = "defmt"))]
+                #[cfg(feature = "log")]
                 Err(_) => info!("Received: '{:02x?}' info: {:?}", &buff[0..n as usize], i),
                 #[cfg(feature = "defmt")]
                 Err(_) => info!("Received: '{:?}' info: {:?}", &buff[0..n as usize], i),
