@@ -17,7 +17,7 @@ std = [ ]
 nonblocking = [ ]
 mock = [ "embedded-hal-mock" ]
 helpers = [ "structopt", "humantime", "std", "pcap-file", "libc", "byteorder", "rolling-stats" ]
-default = [ "log" ]
+default = [ "defmt" ]
 
 [dependencies]
 embedded-hal = "=1.0.0-alpha.7"
